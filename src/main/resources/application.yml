@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: file-loader-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ussd
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 500
+        order_inserts: true
+    open-in-view: false
+
+file-loader:
+  input-directory: ${FILE_LOADER_INPUT_DIR:./data/input}
+  archive-directory: ${FILE_LOADER_ARCHIVE_DIR:./data/input/archive}
+  batch-size: 500
