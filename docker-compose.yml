@@ -1,0 +1,28 @@
+# =============================================================================
+# Application 2: File Loader Service — Local Infrastructure
+# =============================================================================
+services:
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: file-loader-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ussd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Uncomment to auto-apply SQL on first database initialization only:
+      # - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ussd"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+volumes:
+  postgres_data:
+    name: file-loader-postgres-data
