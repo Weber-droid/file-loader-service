@@ -72,6 +72,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<environmentVariables>
+						<SPRING_DATASOURCE_URL>jdbc:postgresql://127.0.0.1:5434/ussd</SPRING_DATASOURCE_URL>
+						<SPRING_DATASOURCE_USERNAME>postgres</SPRING_DATASOURCE_USERNAME>
+						<SPRING_DATASOURCE_PASSWORD>fileloader</SPRING_DATASOURCE_PASSWORD>
+					</environmentVariables>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

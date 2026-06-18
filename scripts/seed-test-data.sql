@@ -1,0 +1,68 @@
+-- Seed data from USSD events sample (matches ussd-events-sample.cdr used in local testing).
+-- Applied automatically on first Postgres container start (after 01-schema.sql).
+
+INSERT INTO call_detail_records (
+    "RECORD_DATE", "L_SPC", "L_SSN", "L_RI", "L_GT_I", "L_GT_DIGITS",
+    "R_SPC", "R_SSN", "R_RI", "R_GT_I", "R_GT_DIGITS", "SERVICE_CODE",
+    "OR_NATURE", "OR_PLAN", "OR_DIGITS", "DE_NATURE", "DE_PLAN", "DE_DIGITS",
+    "ISDN_NATURE", "ISDN_PLAN", "MSISDN", "VLR_NATURE", "VLR_PLAN", "VLR_DIGITS",
+    "IMSI", "STATUS", "TYPE", "TSTAMP", "LOCAL_DIALOG_ID", "REMOTE_DIALOG_ID",
+    "DIALOG_DURATION", "USSD_STRING", "ID"
+) VALUES
+(
+    '2023-08-18 10:00:00.024', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103804442', '*611#',
+    1, 1, '573103154393', 1, 6, '732101647793504',
+    1, 1, '573228553366', NULL, NULL, NULL,
+    NULL, 'FAILED_DIALOG_USER_ABORT', 'PULL', '2023-08-18 10:00:00.024',
+    5948547, 924990671, 50141, '3,2,2,1,1', '1c3394ad-2ac0-4bcb-9d87-882a442ea947'
+),
+(
+    '2023-08-18 10:00:00.053', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103804441', '*611#',
+    1, 1, '573103600003', 1, 6, '732101506919571',
+    1, 1, '573113244726', NULL, NULL, NULL,
+    NULL, 'FAILED_DIALOG_TIMEOUT', 'PULL', '2023-08-18 10:00:00.053',
+    5948549, 690185401, 50030, NULL, 'b1050d08-79d8-4893-8436-818beaafc460'
+),
+(
+    '2023-08-18 10:00:00.113', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103602000', '*611#',
+    1, 1, '573104438064', 1, 6, '732101643243482',
+    1, 1, '573164454442', NULL, NULL, NULL,
+    NULL, 'SUCCESS', 'PULL', '2023-08-18 10:00:00.113',
+    5948688, 187195827, 33354, '1,1,2,1,3', 'fc352a22-61f4-43fe-b762-589ebcd0068c'
+),
+(
+    '2023-08-18 10:00:00.162', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103804442', '*611#',
+    1, 1, '573103150017', 1, 6, '732101668841985',
+    1, 1, '573138055627', NULL, NULL, NULL,
+    NULL, 'FAILED_DIALOG_USER_ABORT', 'PULL', '2023-08-18 10:00:00.162',
+    5948798, 924980879, 21139, '3,1', '7ed538ad-58fd-4f5c-b90d-04f0b9db3dc4'
+),
+(
+    '2023-08-18 10:00:00.262', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103154411', '*611#',
+    1, 1, '573103154200', 1, 6, '732101609484514',
+    1, 1, '573118221206', NULL, NULL, NULL,
+    NULL, 'SUCCESS', 'PULL', '2023-08-18 10:00:00.262',
+    5948614, 69545808, 42062, '1,1,1,1,3', 'f3897680-bea3-427b-97af-730b244f07ab'
+),
+(
+    '2023-08-18 10:00:00.299', 15845, 15, 0, 4, '573103154359',
+    NULL, 6, 0, 4, '573103804481', '*611#',
+    1, 1, '573103154377', 1, 6, '732101535932737',
+    1, 1, '573107255337', NULL, NULL, NULL,
+    NULL, 'SUCCESS', 'PULL', '2023-08-18 10:00:00.299',
+    5948802, 1244156208, 20792, '1,1,1,1,3', '762bf9be-285c-4200-bd1a-4fbe9b867535'
+);
+
+INSERT INTO cdr_logs (file_name, upload_start_time, upload_end_time, success_count, failed_count)
+VALUES (
+    'ussd-events-sample.cdr',
+    '2023-08-18 10:00:00',
+    '2023-08-18 10:00:01',
+    6,
+    0
+);
