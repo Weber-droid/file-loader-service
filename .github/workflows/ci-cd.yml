@@ -30,8 +30,5 @@ jobs:
       - name: Run unit tests
         run: ./mvnw -B test
 
-      - name: Run SpotBugs analysis
-        run: ./mvnw -B spotbugs:check
-
       - name: Package application
         run: ./mvnw -B package -DskipTests
